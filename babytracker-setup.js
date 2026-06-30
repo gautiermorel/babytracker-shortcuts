@@ -1,6 +1,5 @@
 const KC_PREFIX = "BABYTRACKER_"
 
-await saveSecret("TOKEN_NATIVE", "Token native")
 await saveSecret("TARGET_DEVICE_UUID", "Device UUID")
 await saveSecret("PASSWORD", "Mot de passe", true)
 await saveSecret("EMAIL", "Email")

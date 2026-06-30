@@ -1,17 +1,17 @@
 const baseUrl = "https://prodapp.babytrackers.com"
 const KC_PREFIX = "BABYTRACKER_"
 
-const tokenNative = getSecret("TOKEN_NATIVE")
+// Pick your own baby
+const babyUUID = '84F124F4-3848-4029-B754-1FB0C2585F8A' // Louis
 const targetDeviceUUID = getSecret("TARGET_DEVICE_UUID")
 const password = getSecret("PASSWORD")
 const email = getSecret("EMAIL")
 
-const temperatureValue = parseTemperature(args.shortcutParameter)
+const temperatureValue = parseTemperature(args.shortcutParameter || '37')
 
 const headers = {
   "User-Agent": "BabyTracker/273 CFNetwork/3860.600.12 Darwin/25.5.0",
   "Content-Type": "application/json",
-  "Authorization": `Bearer ${tokenNative}`
 }
 
 const sessionReq = new Request(`${baseUrl}/session`)
@@ -20,8 +20,6 @@ sessionReq.headers = headers
 
 sessionReq.body = JSON.stringify({
   Device: {
-    DeviceOSInfo: "iPhone18,3",
-    DeviceName: "iPhone",
     DeviceUUID: targetDeviceUUID
   },
   AppInfo: {
@@ -75,7 +73,7 @@ const transaction = {
     BCObjectType: "TemperatureMeasure"
   },
   BCObjectType: "Temperature",
-  note: "Ajouté depuis SIRI",
+  note: '',
   time: appTime,
   timezone: 3600,
   newFlage: "true",
@@ -83,15 +81,7 @@ const transaction = {
   pictureNote: [],
   timestamp: appTime,
   baby: {
-    dueDay: "2026-06-25 22:45:59 +0000",
-    BCObjectType: "Baby",
-    gender: "true",
-    pictureName: "B2CD9EB9-7983-4A68-AE82-625CF28C7D54",
-    dob: "2026-06-18 12:50:43 +0000",
-    newFlage: "false",
-    timestamp: "1970-01-01 00:00:00 +0000",
-    name: "Louis",
-    objectID: "84F124F4-3848-4029-B754-1FB0C2585F8A"
+    objectID: babyUUID,
   },
   objectID: uuidv4().toUpperCase()
 }

@@ -19,6 +19,42 @@ You'll need the following apps installed on your iPhone:
 
   * https://apps.apple.com/us/app/shortcuts/id915249334
 
+## Finding your Device UUID and Baby UUID
+
+The setup script requires values that are not exposed by the BabyTracker application.
+
+These can be obtained by inspecting the application's network traffic.
+
+### Requirements
+
+* [Charles Proxy](https://www.charlesproxy.com/)
+* An iPhone with BabyTracker installed
+* SSL Proxying enabled in Charles (recommended)
+
+### Steps
+
+1. Install and configure Charles Proxy.
+2. Configure your iPhone to use Charles as its HTTP/HTTPS proxy.
+3. Enable SSL Proxying for the BabyTracker API.
+4. Launch the BabyTracker app and sign in.
+5. Monitor the requests sent by the application.
+
+The values can typically be found in the following requests:
+
+| Value                | Where to look                                                              |
+| -------------------- | -------------------------------------------------------------------------- |
+| `TARGET_DEVICE_UUID` | `/session` request payload (`Device.DeviceUUID`)                           |
+| `BABY_UUID`          | Temperature, feeding, diaper, or other activity payloads (`baby.objectID`) |
+
+Once you've collected these values, run `babytracker-setup.js` and enter them when prompted.
+
+> **Note**
+> These values are specific to your BabyTracker account and device.
+>
+> They should be treated as sensitive information and should never be committed to source control or shared publicly.
+
+
+
 ## Installation
 
 Import the following scripts into Scriptable:
