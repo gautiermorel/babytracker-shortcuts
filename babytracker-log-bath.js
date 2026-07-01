@@ -110,7 +110,7 @@ if (txReq.response.statusCode < 200 || txReq.response.statusCode >= 300) {
   throw new Error("TRANSACTION HTTP " + txReq.response.statusCode + "\n" + txResult)
 }
 
-const output = 'Louis a franchi une nouvelle étape: Bain.'
+const output = 'Le bain de Louis a bien été ajouté!'
 
 Script.setShortcutOutput(output)
 Script.complete()
