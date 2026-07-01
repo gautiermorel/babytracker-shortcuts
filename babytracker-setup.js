@@ -1,14 +1,14 @@
 const KC_PREFIX = "BABYTRACKER_"
 
 await saveSecret("TARGET_DEVICE_UUID", "Device UUID")
-await saveSecret("PASSWORD", "Mot de passe", true)
+await saveSecret("PASSWORD", "Password", true)
 await saveSecret("EMAIL", "Email")
 
-console.log("Configuration enregistrée.")
+console.log("Secrets saved!")
 
 const notification = new Notification()
 notification.title = "BabyTracker"
-notification.body = "Configuration enregistrée."
+notification.body = "Secrets saved!"
 await notification.schedule()
 
 Script.complete()

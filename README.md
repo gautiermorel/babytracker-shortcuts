@@ -2,8 +2,6 @@
 
 Add Siri Shortcuts to **BabyTracker** using **Scriptable** and **Apple Shortcuts**.
 
-This project currently provides a shortcut for quickly logging your baby's temperature directly from Siri, without opening the BabyTracker app.
-
 ## Requirements
 
 You'll need the following apps installed on your iPhone:
@@ -57,10 +55,7 @@ Once you've collected these values, run `babytracker-setup.js` and enter them wh
 
 ## Installation
 
-Import the following scripts into Scriptable:
-
-* `babytracker-setup.js`
-* `babytracker-add-temperature.js`
+Import the scripts into Scriptable:
 
 ## Initial Setup
 
@@ -75,7 +70,6 @@ The setup wizard will ask for:
 * BabyTracker email
 * BabyTracker password
 * Device UUID
-* Native Token
 
 These values are securely stored in the iOS Keychain and won't need to be entered again.
 
@@ -83,13 +77,15 @@ These values are securely stored in the iOS Keychain and won't need to be entere
 
 Create a new shortcut in the **Shortcuts** app with the following actions:
 
+Example with temperature
+
 1. **Ask for Text**
 
    * Prompt: `What's the temperature?`
 
 2. **Run Script**
 
-   * Script: `babytracker-add-temperature.js`
+   * Script: `babytracker-log-temperature.js`
    * Input: **Provided Input**
 
 3. **Speak Text**

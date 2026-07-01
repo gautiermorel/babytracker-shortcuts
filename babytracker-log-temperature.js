@@ -58,7 +58,7 @@ const devices = JSON.parse(devicesRaw)
 const device = devices.find(d => d.DeviceUUID === targetDeviceUUID)
 
 if (!device) {
-  throw new Error("Device cible introuvable")
+  throw new Error("Device not found")
 }
 
 const syncId = Number(device.LastSyncID) + 1
@@ -152,7 +152,7 @@ function parseTemperature (input) {
   const value = parseFloat(raw)
 
   if (isNaN(value)) {
-    throw new Error("Température invalide : " + input)
+    throw new Error("Invalid temperature : " + input)
   }
 
   return Math.round(value * 10) / 10
@@ -162,7 +162,7 @@ function getSecret (name) {
   const key = KC_PREFIX + name
 
   if (!Keychain.contains(key)) {
-    throw new Error(`Secret manquant : ${key}. Lance d'abord BabyTracker Setup.`)
+    throw new Error(`Missing secret : ${key}. Please run BabyTracker Setup first.`)
   }
 
   return Keychain.get(key)
