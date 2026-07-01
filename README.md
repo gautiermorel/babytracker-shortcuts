@@ -94,7 +94,7 @@ Example with temperature
 
 Your shortcut should look similar to this:
 
-![Shortcut example](assets/shortcut-example.png)
+![Shortcut example](assets/shortcut-example.png?v=1)
 
 ## Example
 
